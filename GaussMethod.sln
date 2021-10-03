@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GaussMethod", "GaussMethod.csproj", "{764713F2-532B-4662-A858-A85C5D0F7CD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{764713F2-532B-4662-A858-A85C5D0F7CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{764713F2-532B-4662-A858-A85C5D0F7CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{764713F2-532B-4662-A858-A85C5D0F7CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{764713F2-532B-4662-A858-A85C5D0F7CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4B51E81-9B8E-440C-8607-976DBCB8B323}
+	EndGlobalSection
+EndGlobal
