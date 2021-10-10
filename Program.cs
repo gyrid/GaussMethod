@@ -137,16 +137,22 @@ namespace GaussMethod
         {
             //Сортировка строк по столбцу col для расширенной матрицы[n; n+1]
             //n размерность массива
-            int i = col; decimal temp;
-            while (matrix[i, col] == 0 && i < n)
+            decimal temp;
+            decimal elemLeader = 0;
+            int stringLeader = -1;
+            for (int i = col; i < n; i++)
             {
-                i++;
+                if (Math.Abs(matrix[i, col]) > elemLeader)
+                {
+                    elemLeader = Math.Abs(matrix[i, col]);
+                    stringLeader = i;
+                }
             }
             for (int j = 0; j < n+1; j++)
             {
                 temp = matrix[col, j];
-                matrix[col, j] = matrix[i, j];
-                matrix[i, j] = temp;
+                matrix[col, j] = matrix[stringLeader, j];
+                matrix[stringLeader, j] = temp;
             }
         }
         static public void OutputMatrix(decimal[,] mtrExt, int n, bool flag = false)
