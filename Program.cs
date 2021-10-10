@@ -68,7 +68,6 @@ namespace GaussMethod
 
                 /*Тестирование программы
                   Test1(ref mtrExt, n, 2);// 2 значит, что проверка идет 3-ого столбца
-                  Test2(mtrExt, n);
                 */
 
                 //Реализация прямого хода Гауса
@@ -92,7 +91,7 @@ namespace GaussMethod
                 Console.WriteLine("\n\nПосле реализации прямого хода Гауса:");
                 OutputMatrix(mtrExt, n, true);
 
-                if (!FoundExistingSolution(mtrExt, n))
+                if (!FoundExistingSolution(mtrExt))
                 {
                     Console.WriteLine("Единственного решения не существует");
                 }
@@ -180,52 +179,17 @@ namespace GaussMethod
                 }
             }
         }
-        static public bool FoundExistingSolution(decimal[,] mtrExt, int n, bool flagOutput = false)
+        static public bool FoundExistingSolution(decimal[,] mtrExt)
         {
-            int rangExtMatrix = 0; int rangBaseMatrix = 0;
-            bool flag2 = true;
-            for (int i = 0; i < n; i++)
+            bool flagExisingSolution = true;
+            for (int i = 0; i < mtrExt.GetLength(0); i++)
             {
-                int j = i;
-                for (; j < n + 1; j++)
-                {
-                    if (mtrExt[i, j] != 0) {
-                        flag2 = false;
-                        break;
-                    }   
-                }
-                if (j-1 <n){
-                    rangBaseMatrix++;
-                }
-                if(!flag2){
-                    rangExtMatrix++;
-                    flag2 = true;
-                }
+               if(mtrExt[i,i] == 0)
+               {
+                    flagExisingSolution = false;
+               }
             }
-            if (rangExtMatrix == rangBaseMatrix)
-            {
-                if (rangExtMatrix == n)
-                {
-                    if (flagOutput)
-                    {
-                        Console.WriteLine("СЛАУ совместная и определенная (единственное решение)");
-                    }
-                    return true;
-                }
-                else
-                {
-                    if (flagOutput)
-                    {
-                        Console.WriteLine("CЛАУ совместная и неопределенная (бесконечное кол-во решений)");
-                    }
-                    return false;
-                }
-            }
-            if (flagOutput)
-            {
-                Console.WriteLine("СЛАУ несовместная (нет решений)");
-            }
-            return false;
+            return flagExisingSolution;
         }
         static public bool CheckSolution(decimal[,] mtrExt, decimal[] mtrSol)
         {
@@ -247,13 +211,6 @@ namespace GaussMethod
             SortMatrix(ref mtrExt, n, col);
             Console.WriteLine($"\nПосле сортировки матрицы по строкам {col+1}-го столбца: ");
             OutputMatrix(mtrExt, n);
-        }
-        static public void Test2(decimal[,] mtrExt, int n)
-        {
-            Console.WriteLine("Представление расширенной матрицы в виде треугольной");
-            OutputMatrix(mtrExt, n , true);
-            Console.WriteLine("\nХарактер матрицы: ");
-            FoundExistingSolution(mtrExt, n, true);
         }
     }
 }
